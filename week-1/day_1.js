@@ -1,5 +1,4 @@
 
-
 console.log(("hello is bad "));
 
 let n = 6;
