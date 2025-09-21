@@ -1,0 +1,37 @@
+. **--** important learning 
+      // in ternary operator it must return a value instead of assignment or logging it is not okay;
+
+
+"L   Z"
+
+How ? 
+loops can be used 
+count space in-between them 
+3 space 
+
+run the loop from the Lion encounter to Zebra encounter 
+keep these encounter excluded from counting space.
+
+need to track if we have ecnountered a lion or a zebra 
+
+Now if encountered lion we can count the upcoming
+ space based on there is a Lion ready to hunt
+
+ need a way to store the count of steps taken before the hunt 
+
+ it break if there is a space after the hunt (" L   Z " )
+ need a way to control this 
+ I controlled by scanning for hunt (Z) itself the moment we encounter it we stop
+
+ I stored the  count when two different animal were encountered, but after comparing value of previously stored count and current count 
+ if current count was less than previous count then I stored it and in both case wether true or false 
+ we reset count to 0 
+
+the outline of this problem 
+    " "count white spaces 
+    but only if an animal encountered previously
+    and reset the count if the same animal that we encountered previously occurrs again 
+
+    if different animal encountered then store if and only if the value is less than previous value 
+
+    
