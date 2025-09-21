@@ -1,25 +1,32 @@
-const jungle = " Z    LL L L  ";
+const jungle = " ZZ  ";
+
 let previousAnimal = "";
-let steps = -1;
-let count = 0;
+
+let actualSteps = -1;
+let possibleSteps = 0;
 
 for (let i = 0; i < jungle.length; i++) {
   const current = jungle[i];
-  if (current === " " && previousAnimal) {
-    count = count + 1;
-  } else if (current !== " ") {
-    if (previousAnimal !== "") {
-      if (previousAnimal !== current) {
-        const changeSteps = steps === -1 || steps > count;
+  const spaceFound = current === " ";
 
-        steps = changeSteps ? count : steps;
+  if (spaceFound && previousAnimal) {
+    possibleSteps = possibleSteps + 1;
+  } else if (!spaceFound) {
+    const huntPossible = previousAnimal && previousAnimal !== current;
 
-        count = 0;
-      } else if (previousAnimal === current) {
-        count = 0;
-      }
+    if (huntPossible) {
+      const changeSteps = actualSteps === -1 || actualSteps > possibleSteps;
+      actualSteps = changeSteps ? possibleSteps : actualSteps;
     }
+    possibleSteps = 0;
     previousAnimal = current;
   }
 }
-console.log("value of steps", steps);
+const HuntOccurred = actualSteps === -1;
+if (HuntOccurred && previousAnimal === "Z") {
+  console.log("no Lion found.");
+} else if (HuntOccurred && previousAnimal === "L") {
+  console.log("no Zebra to hunt.");
+}
+
+console.log("steps before hunt: ", actualSteps);
