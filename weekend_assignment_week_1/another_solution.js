@@ -1,19 +1,22 @@
 const jungle = " ZZ  ";
+const possibleSpaces = jungle.length;
 
 let previousAnimal = "";
 
 let actualSteps = -1;
 let possibleSteps = 0;
 
-for (let i = 0; i < jungle.length; i++) {
+for (let i = 0; i < possibleSpaces; i++) {
+
   const current = jungle[i];
   const spaceFound = current === " ";
 
   if (spaceFound && previousAnimal) {
     possibleSteps = possibleSteps + 1;
   } else if (!spaceFound) {
-    const huntPossible = previousAnimal && previousAnimal !== current;
 
+    const huntPossible = previousAnimal && previousAnimal !== current;
+    
     if (huntPossible) {
       const changeSteps = actualSteps === -1 || actualSteps > possibleSteps;
       actualSteps = changeSteps ? possibleSteps : actualSteps;
@@ -22,6 +25,7 @@ for (let i = 0; i < jungle.length; i++) {
     previousAnimal = current;
   }
 }
+
 const HuntOccurred = actualSteps === -1;
 if (HuntOccurred && previousAnimal === "Z") {
   console.log("no Lion found.");
