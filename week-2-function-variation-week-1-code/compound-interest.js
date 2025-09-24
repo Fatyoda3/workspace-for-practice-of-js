@@ -9,15 +9,14 @@ const r = 10;
 // Do not use compound interest formula to calculate the compound interest.
 // Use simple interest formula and a loop to calculate the compound interest.
 // START YOUR CODE AFTER THIS LINE. DO NOT REMOVE THIS LINE
-
-function simpleInterest(amount, r) {
+function interestPerYear(amount, r) {
   return amount * (r / 100);
 }
 
 function getCompound(x, t, r) {
   let amount = x;
   for (let currentYear = 0; currentYear < t; currentYear++) {
-    amount = amount + simpleInterest(amount, r);
+    amount = amount + interestPerYear(amount, r);
   }
   return amount - x;
 }
@@ -27,6 +26,7 @@ function tesCompoundInterest(amount, t, r, expectedValue) {
   const isWorking = valueWeGot === expectedValue ? '✅' : '❌'
   const message = "value we expected " + expectedValue + " and we got " + valueWeGot + ' ' + isWorking;
   console.log(message);
+
 }
 
 function main() {
