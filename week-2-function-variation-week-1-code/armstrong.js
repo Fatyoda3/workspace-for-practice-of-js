@@ -11,6 +11,7 @@ const a = 9474;
 // START YOUR CODE AFTER THIS LINE. DO NOT REMOVE THIS LINE
 function getNumberOfDigits(number) {
   let digitCount = 0;
+  
   while (number) {
     const remainder = (number % 10);
     number = (number - remainder) / 10;
@@ -18,29 +19,32 @@ function getNumberOfDigits(number) {
   }
   return digitCount;
 }
+
 function isArmstrong(armstrongCandidate) {
-  
+
   let x = armstrongCandidate;
   const power = getNumberOfDigits(x);
   let sumOfDigitCubes = 0;
 
   for (let term = 0; term < power; term++) {
-    
     const remainder = (x % 10);
-    
     sumOfDigitCubes = sumOfDigitCubes + remainder ** power;
-    
     x = (x - remainder) / 10;
   }
   return sumOfDigitCubes === armstrongCandidate;
 }
-function main() {
-  console.log(isArmstrong(1));
-  console.log(isArmstrong(2));
-  console.log(isArmstrong(3));
-  console.log(isArmstrong(4));
-  console.log(isArmstrong(153));
-  console.log(isArmstrong(9474));
+
+function testArmstrong(input, valueWeGot, expectedValue) {
+  const message = input + " was and value we expected " + expectedValue + " and we got " + valueWeGot;
+  console.log(message);
 }
 
-main()
+function main() {
+  testArmstrong(1, isArmstrong(1), 1);
+  testArmstrong(2, isArmstrong(2), 2);
+  testArmstrong(3, isArmstrong(3), 3);
+  testArmstrong(153, isArmstrong(153), 153);
+  testArmstrong(9474, isArmstrong(9474), 9474);
+}
+
+main();
