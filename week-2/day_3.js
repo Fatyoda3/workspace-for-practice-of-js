@@ -1,28 +1,23 @@
-function stringSplitter(sentence, pattern) {
-  const needle = pattern;
-  const tip = needle[0];
-
-  let split = '';
-  let needleParts = "";
-
-  for (let pos = 0; pos < sentence.length; pos++) {
-    const char = sentence[pos];
-    if (tip !== char)
-      split = split + char;
-
-    else {
-      for (let i = pos; i < (pos + needle.length); i++) {
-        if (sentence[i] === needle[i - pos]) {
-          needleParts = needleParts + sentence[i];
-        }
-      }
-      if (needleParts === needle) { pos = pos + needle.length - 1; }
-      else split = split + sentence[pos];
-      needleParts = "";
-    }
-  }
-  return split
+function isSubString(text, index, sub) {
+  for (let i = 0; i < sub.length; i++)
+    if (text[i + index] !== sub[i])
+      return false;
+  return true;
 }
 
-console.log(stringSplitter('b_ab_aa', 'aa'));
+function removeSubString(text, sub) {
+  if (!sub) return text;
+  let editedText = '';
+  let i = 0;
 
+  while (i < text.length) {
+    let delta = sub.length;
+    if (!isSubString(text, i, sub)) {
+      editedText += text[i];
+      delta = 1;
+    }
+    i += delta;
+  }
+  return editedText;
+}
+console.log(removeSubString('Hello Hello world', 'ello'));
