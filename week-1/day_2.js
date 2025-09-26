@@ -1,12 +1,8 @@
-
 console.log("\u001b[31m");
 console.log("\u001b[47m");
 
-
 console.log("logical and : for 2 , 3 ->", (2 && 3)); 
 console.log("\u001b[00m");
-
-console.log("hello world");
 
 let appleCount = 5;
 if (appleCount) {
