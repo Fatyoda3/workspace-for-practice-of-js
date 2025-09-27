@@ -1,19 +1,14 @@
 function isVowel(letter) {
-  switch (letter) {
-    case 'a':
+  const vowels = 'aeiou';
+
+  for (let current = 0; current < vowels.length; current++) {
+
+    if (vowels[current] === letter) {
       return true;
-    case 'e':
-      return true;
-    case 'i':
-      return true;
-    case 'o':
-      return true;
-    case 'u':
-      return true;
+    }
   }
   return false;
 }
-
 
 function minimumDistance(string) {
   let vowelFound = false;
@@ -21,8 +16,11 @@ function minimumDistance(string) {
   let distance = Infinity;
 
   for (let index = 0; index < string.length; index++) {
+
     const isCurrentVowel = isVowel(string[index]);
+    
     if (vowelFound && isCurrentVowel) {
+      
       if (distance > count) {
         distance = count;
       }
