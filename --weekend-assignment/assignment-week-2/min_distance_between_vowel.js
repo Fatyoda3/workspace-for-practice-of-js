@@ -1,17 +1,18 @@
 function isVowel(letter) {
-  const vowels = 'aeiou';
 
-  for (let current = 0; current < vowels.length; current++) {
-
-    if (vowels[current] === letter) {
+  switch (letter) {
+    case 'a':
+    case 'e':
+    case 'i':
+    case 'o':
+    case 'u':
       return true;
-    }
   }
   return false;
 }
 
 function minimumDistance(string) {
-  let vowelOccurrence = -1;
+  let vowelOccurred = false;
   let lastVowelPos = 0;
   let distance = Infinity;
 
@@ -20,13 +21,15 @@ function minimumDistance(string) {
     const isCurrentVowel = isVowel(string[index]);
 
     if (isCurrentVowel) {
-      vowelOccurrence += 1;
       const currentDistance = index - lastVowelPos;
 
-      if (distance > currentDistance && vowelOccurrence) {
+      if (distance > currentDistance && vowelOccurred) {
         distance = currentDistance;
       }
+
       lastVowelPos = index;
+      vowelOccurred = true;
+
     }
   }
 
@@ -35,11 +38,11 @@ function minimumDistance(string) {
 
 
 function composeMessage(string, expectedValue, valueWeGot) {
-  const part1 = " input->" + string;
-  const part2 = " expected->" + expectedValue;
-  const part3 = " output->" + valueWeGot;
+  const inputFragment = " input->" + string;
+  const expectedFragment = " expected->" + expectedValue;
+  const outputFragment = " output->" + valueWeGot;
 
-  return part1 + part2 + '|' + part3;
+  return inputFragment + expectedFragment + '|' + outputFragment;
 }
 
 function testMinimumDistance(string, expectedValue) {
@@ -63,6 +66,7 @@ function testAll() {
   testMinimumDistance('strength', -1);
   testMinimumDistance('bcd', -1);
   testMinimumDistance('abyss', -1);
+  testMinimumDistance('abyss beneath', 1);
 }
 
 testAll();
