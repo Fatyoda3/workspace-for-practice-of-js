@@ -11,26 +11,22 @@ function isVowel(letter) {
 }
 
 function minimumDistance(string) {
-  let vowelFound = false;
-  let count = 0;
+  let vowelOccurrence = -1;
+  let lastVowelPos = 0;
   let distance = Infinity;
 
   for (let index = 0; index < string.length; index++) {
 
     const isCurrentVowel = isVowel(string[index]);
-    
-    if (vowelFound && isCurrentVowel) {
-      
-      if (distance > count) {
-        distance = count;
-      }
-      count = 0;
-    }
+
     if (isCurrentVowel) {
-      vowelFound = true;
-    }
-    if (vowelFound) {
-      count++;
+      vowelOccurrence += 1;
+      const currentDistance = index - lastVowelPos;
+
+      if (distance > currentDistance && vowelOccurrence) {
+        distance = currentDistance;
+      }
+      lastVowelPos = index;
     }
   }
 
@@ -58,6 +54,8 @@ function testMinimumDistance(string, expectedValue) {
 
 function testAll() {
   testMinimumDistance('hello', 3);
+  testMinimumDistance('shellfish', 4);
+
   testMinimumDistance('heo', 1);
   testMinimumDistance('beautiful', 1);
   testMinimumDistance('aaaa', 1);
