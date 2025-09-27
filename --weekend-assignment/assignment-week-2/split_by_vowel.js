@@ -1,23 +1,9 @@
-/* 
-apple	ape,p,l
-there	tere,h
-hello	helo,l
-abyss	ab,y,s,s
-this	tis,h
-*/
-
-const string = 'apple';
-
 function isVowel(letter) {
   switch (letter) {
     case 'a':
-      return true;
     case 'e':
-      return true;
     case 'i':
-      return true;
     case 'o':
-      return true;
     case 'u':
       return true;
   }
