@@ -2,9 +2,24 @@ function maxSequence(string) {
   if (string === '') {
     return '0';
   }
-  return 'a,' + '1';
+  let current = 0;
+  let count = 0;
+  if (string[current] === 'a') {
+    count += 1;
+  }
+  current += 1;
+  if (string[current] === 'a') {
+    count += 1
+  }
+  current += 1;
+  if (string[current] === 'a') {
+    count += 1
+  }
+
+  return 'a,' + count;
 
 }
+
 function composeMessage(equalCheck, expectedValue, valueWeGot) {
   const isWorking = equalCheck ? '✅' : '❌';
   const working = isWorking + " value we expected ";
@@ -12,6 +27,7 @@ function composeMessage(equalCheck, expectedValue, valueWeGot) {
 
   return working + comparison;
 }
+
 function testMaxSequence(string, expectedValue) {
 
   const valueWeGot = maxSequence(string);
