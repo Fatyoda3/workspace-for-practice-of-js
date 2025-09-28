@@ -26,6 +26,7 @@ function testAll() {
 
   testMaxSequence('', '0');
   testMaxSequence('a', 'a,1');
+  testMaxSequence('aaa', 'a,3');
 
 }
 
