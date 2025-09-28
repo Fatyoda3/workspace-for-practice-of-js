@@ -1,12 +1,13 @@
 function maxSequence(string) {
+
   if (string === '') {
     return '0';
   }
 
-  let count = 0;
-
-  for (let current = 0; current < string.length; current++) {
-    if (string[current] === 'a') {
+  let count = 1;
+  let lastLetter = string[0];
+  for (let current = 1; current < string.length; current++) {
+    if (string[current] === lastLetter) {
       count += 1;
     }
   }
@@ -23,7 +24,6 @@ function composeMessage(equalCheck, expectedValue, valueWeGot) {
 }
 
 function testMaxSequence(string, expectedValue) {
-
   const valueWeGot = maxSequence(string);
   const equalCheck = valueWeGot === expectedValue;
 
@@ -38,7 +38,7 @@ function testAll() {
   testMaxSequence('aaa', 'a,3');
   testMaxSequence('aaaa', 'a,4');
   testMaxSequence('abba', 'b,2');
-  
+
 }
 
 testAll();
