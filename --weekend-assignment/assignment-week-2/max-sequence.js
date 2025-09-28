@@ -33,12 +33,12 @@ function testMaxSequence(string, expectedValue) {
 }
 
 function testAll() {
-
   testMaxSequence('', '0');
   testMaxSequence('a', 'a,1');
   testMaxSequence('aaa', 'a,3');
   testMaxSequence('aaaa', 'a,4');
-
+  testMaxSequence('abba', 'b,2');
+  
 }
 
 testAll();
