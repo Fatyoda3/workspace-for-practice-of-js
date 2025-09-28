@@ -2,20 +2,14 @@ function maxSequence(string) {
   if (string === '') {
     return '0';
   }
-  let current = 0;
-  let count = 0;
-  if (string[current] === 'a') {
-    count += 1;
-  }
-  current += 1;
-  if (string[current] === 'a') {
-    count += 1
-  }
-  current += 1;
-  if (string[current] === 'a') {
-    count += 1
-  }
 
+  let count = 0;
+
+  for (let current = 0; current < string.length; current++) {
+    if (string[current] === 'a') {
+      count += 1;
+    }
+  }
   return 'a,' + count;
 
 }
