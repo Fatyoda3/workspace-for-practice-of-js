@@ -6,9 +6,13 @@ function maxSequence(string) {
 
   let count = 1;
   let lastLetter = string[0];
+
   for (let current = 1; current < string.length; current++) {
     if (string[current] === lastLetter) {
       count += 1;
+    }
+    else {
+      lastLetter = string[current];
     }
   }
   return 'a,' + count;
@@ -24,6 +28,7 @@ function composeMessage(equalCheck, expectedValue, valueWeGot) {
 }
 
 function testMaxSequence(string, expectedValue) {
+
   const valueWeGot = maxSequence(string);
   const equalCheck = valueWeGot === expectedValue;
 
@@ -33,6 +38,7 @@ function testMaxSequence(string, expectedValue) {
 }
 
 function testAll() {
+
   testMaxSequence('', '0');
   testMaxSequence('a', 'a,1');
   testMaxSequence('aaa', 'a,3');
