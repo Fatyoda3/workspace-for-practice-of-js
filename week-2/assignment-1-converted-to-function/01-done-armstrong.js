@@ -20,10 +20,13 @@ function isArmstrong(armstrongCandidate) {
   }
   return sumOfDigitCubes === armstrongCandidate;
 }
+
 function testArmstrong(input, valueWeGot, expectedValue) {
-  const message = input + " was and value we expected " + expectedValue + " and we got " + valueWeGot;
+  let message = input + " was and value we expected ";
+  message += expectedValue + " and we got " + valueWeGot;
   console.log(message);
 }
+
 function testAll() {
   testArmstrong(1, isArmstrong(1), 1);
   testArmstrong(2, isArmstrong(2), 2);
