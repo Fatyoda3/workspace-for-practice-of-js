@@ -10,7 +10,6 @@ function decimalToBinary(decimalNum) {
     str = str + remainder;
   }
   return str;
-  
 }
 
 function testDecimalToBinary(value, expectedValue) {

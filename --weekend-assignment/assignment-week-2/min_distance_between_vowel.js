@@ -1,5 +1,4 @@
 function isVowel(letter) {
-
   switch (letter) {
     case 'a':
     case 'e':
