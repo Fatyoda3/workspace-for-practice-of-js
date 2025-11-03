@@ -1,11 +1,11 @@
-function decodeByteString(input = '', start = 0) {
+function decodeString(input = '', start = 0) {
   const colonIndex = input.indexOf(":", start);
 
   const length = parseInt(input.slice(start, colonIndex));
 
   const end = colonIndex + 1 + length;
 
-  const decoded = input.slice(colonIndex + 1, end); 
+  const decoded = input.slice(colonIndex + 1, end);
 
   return [decoded, end];
 }
@@ -14,9 +14,9 @@ function decodeInteger(input = '', start = 0) {
 
   const end = input.indexOf("e", start);
 
-  const decoded = parseInt(input.slice(start + 1, end)); 
+  const decoded = parseInt(input.slice(start + 1, end));
 
-  return [decoded, end + 1]; 
+  return [decoded, end + 1];
 }
 
 function decodeList(input, start) {
@@ -44,7 +44,7 @@ function callDecodeFor(firstElement, input, start = 0) {
   }
 
   if (!isNaN(parseInt(firstElement))) {
-    return decodeByteString(input, start);
+    return decodeString(input, start);
   }
 }
 
