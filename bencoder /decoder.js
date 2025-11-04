@@ -14,9 +14,20 @@ function decodeInteger(input = '', start = 0) {
 
   const end = input.indexOf("e", start);
 
-  const decoded = parseInt(input.slice(start + 1, end));
+  const frag = [];
 
-  return [decoded, end + 1];
+  for (let index = start + 1; index < end; index++) {
+    const part = input[index];
+
+    if (isNaN(parseInt(part)) && !(['-', '+', 'e', '.'].includes(part))) {
+
+      return ['Invalid Data', end + 1];
+    }
+
+    frag.push(input[index]);
+  }
+
+  return [+(frag.join('')), end + 1];
 }
 
 function decodeList(input, start) {
@@ -34,16 +45,16 @@ function decodeList(input, start) {
   return [decoded, index + 1];
 }
 
-function callDecodeFor(firstElement, input, start = 0) {
-  if (firstElement === "i") {
+function callDecodeFor(identifier, input, start = 0) {
+  if (identifier === "i") {
     return decodeInteger(input, start);
   }
 
-  if (firstElement === "l") {
+  if (identifier === "l") {
     return decodeList(input, start);
   }
 
-  if (!isNaN(parseInt(firstElement))) {
+  if (!isNaN(parseInt(identifier))) {
     return decodeString(input, start);
   }
 }
