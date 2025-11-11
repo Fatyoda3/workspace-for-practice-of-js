@@ -1,0 +1,59 @@
+const m = 100;
+function generatePrime(highestCount) {
+  const pool = [4];
+  const prime = [2];
+
+  for (let index = 3; index < highestCount; index++) {
+    let isPrime = true;
+
+    for (let poolIndex = 0; poolIndex < pool.length; poolIndex++) {
+
+      if (pool[poolIndex] === index) {
+        pool[poolIndex] += prime[poolIndex];
+        isPrime = false;
+      }
+    }
+
+    if (isPrime) {
+      prime.push(index);
+      pool.push(index * index);
+    }
+  }
+  console.log(pool);
+  console.log(prime);
+  return pool;
+}
+
+/* console.log */(generatePrime(m)/* .pop() */);
+
+//______________//
+
+function generatePrime(highestCount) {
+  const pool = new Int32Array(highestCount);
+  pool[0] = 4;
+  const prime = new Int32Array(highestCount);
+  prime[0] = 2;
+
+  let pIndex = 1;
+  let prIndex = 1;
+
+  for (let index = 3; index < highestCount; index++) {
+    let isPrime = true;
+
+    for (let poolIndex = 0; poolIndex < pool.length; poolIndex++) {
+
+      if (pool[poolIndex] === index) {
+        pool[poolIndex] += prime[poolIndex];
+        isPrime = false;
+      }
+    }
+
+    if (isPrime) {
+      prime[prIndex++] = (index);
+      pool[pIndex++] = (index * index);
+    }
+  }
+  console.log(prime);
+}
+
+generatePrime(10e4);
