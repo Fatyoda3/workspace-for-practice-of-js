@@ -1,0 +1,48 @@
+last five elements of the list [ 96, 97, 99, 99, 99 ]
+number of elements  100
+lower upper bounds 5 100
+number of times loop ran: 544
+-----------------------------
+time in seconds 0.002s
+
+last five elements of the list [ 994, 995, 997, 997, 998 ]
+number of elements  1000
+lower upper bounds 5 1000
+number of times loop ran: 8688
+------------------------------
+time in seconds 0.004s
+
+last five elements of the list [ 9999, 9999, 9999, 10000, 10000 ]
+number of elements  10000
+lower upper bounds 5 10000
+number of times loop ran: 120511
+--------------------------------
+time in seconds 0.010s
+
+last five elements of the list [ 99998, 99998, 99999, 99999, 100000 ]
+number of elements  100000
+lower upper bounds 5 100000
+number of times loop ran: 1536521
+---------------------------------
+time in seconds 0.059s
+
+last five elements of the list [ 999998, 999998, 999999, 1000000, 1000000 ]
+number of elements  1000000
+lower upper bounds 5 1000000
+number of times loop ran: 18674147
+----------------------------------
+time in seconds 0.596s
+
+last five elements of the list [ 9999996, 9999996, 9999996, 9999996, 9999997 ]
+number of elements  10000000
+lower upper bounds 5 10000000
+number of times loop ran: 220099257
+-----------------------------------
+time in seconds 6.805s
+
+last five elements of the list [ 9999994, 9999995, 9999995, 9999998, 9999999 ]
+number of elements  10000000
+lower upper bounds 5 10000000
+number of times loop ran: 220103621
+-----------------------------------
+time in seconds 7.827s
