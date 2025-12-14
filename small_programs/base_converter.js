@@ -1,23 +1,21 @@
-const getRepresentation = (number, radix) => {
-  if (radix < 11 || number < 10) {//for bases which can be represented with numeric digits
-    return number;
+const ALPHA_REPRESENTATION = {
+  10: 'A',
+  11: 'B',
+  12: 'C',
+  13: 'D',
+  14: 'E',
+  15: 'F',
+};
+const getRepresentation = (digit, radix) => {
+  if (radix < 11 || digit < 10) {//for bases which can be represented with numeric digits
+    return digit;
   }
-  const alphas = 'ABCDEF';
-  const alphaObject = {
-    10: 'A',
-    11: 'B',
-    12: 'C',
-    13: 'D',
-    14: 'E',
-    15: 'F',
-  };
-  console.log({ number, alpha: alphaObject[number] });
-  return alphaObject[number];
-
+  return ALPHA_REPRESENTATION[digit];
 };
 
 const convertBase = (number, radix) => {
-
+  if (number === 0)
+    return 0;
   const divisor = radix || 10;
   let unitShift = 1;
 
@@ -25,23 +23,23 @@ const convertBase = (number, radix) => {
   let representation = radix > 10 ? '' : 0; //initialValue based on the base
 
   while (dividend > 0) {
-    const remainder = dividend % divisor;
+    const digit = dividend % divisor;
     dividend = Math.floor(dividend / divisor);
 
-    const digitRepresentation = getRepresentation(remainder, radix);
-    const isConvertedString = typeof digitRepresentation === 'string';
+    const convertedDigit = getRepresentation(digit, radix);
+    const isConvertedDigitString = typeof convertedDigit === 'string';
     const isRepresentationString = typeof representation === 'string';
 
-    const digitRep = isConvertedString && isRepresentationString;
-    const d = isRepresentationString ? digitRepresentation : digitRepresentation * unitShift;
+    const digitRep = isConvertedDigitString && isRepresentationString;
+    const d = isRepresentationString ? convertedDigit : convertedDigit * unitShift;
     unitShift *= 10;
 
-    const digitToAdd = digitRep ? digitRepresentation : d;
+    const digitToAdd = digitRep ? convertedDigit : d;
 
     representation = digitToAdd + representation;
   }
 
-  return representation ? representation : representation - 0;
+  return representation;
 };
 
 function test(fn, purpose, number, base, expected) {
