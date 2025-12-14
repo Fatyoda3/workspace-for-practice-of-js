@@ -1,11 +1,11 @@
-const representBase = (number, base) => {
-  if (base < 11) {//for bases which can be represented with digits
+const getRepresentation = (number, radix) => {
+  if (radix < 11) {//for bases which can be represented with digits
     return number;
   }
 
   const alphas = 'ABCDEF';
 
-  for (let index = 0; index < base; index++) {
+  for (let index = 0; index < radix; index++) {
 
     if ((number - 10) === index) {
       return alphas[index];
@@ -15,28 +15,30 @@ const representBase = (number, base) => {
   return number;
 };
 
-const convertBase = (number, base) => {
+const convertBase = (number, radix) => {
 
-  const divisor = base || 10;
+  const divisor = radix || 10;
   let unitShift = 1;
 
   let dividend = number;
-  let converted = base > 10 ? '' : 0; //initialValue based on the base 
+  let representation = radix > 10 ? '' : 0; //initialValue based on the base
+
   while (dividend > 0) {
     const remainder = dividend % divisor;
+    dividend = Math.floor(dividend / divisor);
 
-    dividend = (dividend - remainder) / divisor;
+    const convertedDigit = getRepresentation(remainder, radix);
+    const isConvertedString = typeof convertedDigit === 'string';
+    const isString = typeof representation === 'string';
 
-    const convertedDigit = representBase(remainder, base);
-    const isRepString = typeof converted === 'string';
-    const digitRep = typeof convertedDigit === 'string' && isRepString;
-    const d = isRepString ? convertedDigit : convertedDigit * unitShift;
+    const digitRep = isConvertedString && isString;
+    const d = isString ? convertedDigit : convertedDigit * unitShift;
     unitShift *= 10;
     const digitToAdd = digitRep ? convertedDigit : d;
 
-    converted = digitToAdd + converted;
+    representation = digitToAdd + representation;
   }
-  return converted - 0 || !converted ? converted - 0 : converted;
+  return representation - 0 || !representation ? representation - 0 : representation;
 };
 
 function test(fn, purpose, number, base, expected) {
