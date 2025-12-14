@@ -5,10 +5,10 @@ const representBase = (number, base) => {
 
   const alphas = 'ABCDEF';
 
-  for (let index = 10; index < base; index++) {
+  for (let index = 0; index < base; index++) {
 
-    if (number === index) {
-      return alphas[index - 10];
+    if ((number - 10) === index) {
+      return alphas[index];
     }
   }
 
