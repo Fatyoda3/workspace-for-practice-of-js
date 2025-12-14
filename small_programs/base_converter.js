@@ -27,18 +27,19 @@ const convertBase = (number, radix) => {
     const remainder = dividend % divisor;
     dividend = Math.floor(dividend / divisor);
 
-    const convertedDigit = getRepresentation(remainder, radix);
-    const isConvertedString = typeof convertedDigit === 'string';
-    const isString = typeof representation === 'string';
+    const digitRepresentation = getRepresentation(remainder, radix);
+    const isConvertedString = typeof digitRepresentation === 'string';
+    const isRepresentationString = typeof representation === 'string';
 
-    const digitRep = isConvertedString && isString;
-    const d = isString ? convertedDigit : convertedDigit * unitShift;
+    const digitRep = isConvertedString && isRepresentationString;
+    const d = isRepresentationString ? digitRepresentation : digitRepresentation * unitShift;
     unitShift *= 10;
-    const digitToAdd = digitRep ? convertedDigit : d;
+
+    const digitToAdd = digitRep ? digitRepresentation : d;
 
     representation = digitToAdd + representation;
   }
-  return representation - 0 || !representation ? representation - 0 : representation;
+  return representation ? representation : representation - 0;
 };
 
 function test(fn, purpose, number, base, expected) {
