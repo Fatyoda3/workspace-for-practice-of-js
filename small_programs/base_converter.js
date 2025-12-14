@@ -1,18 +1,19 @@
 const getRepresentation = (number, radix) => {
-  if (radix < 11) {//for bases which can be represented with digits
+  if (radix < 11 || number < 10) {//for bases which can be represented with numeric digits
     return number;
   }
-
   const alphas = 'ABCDEF';
+  const alphaObject = {
+    10: 'A',
+    11: 'B',
+    12: 'C',
+    13: 'D',
+    14: 'E',
+    15: 'F',
+  };
+  console.log({ number, alpha: alphaObject[number] });
+  return alphaObject[number];
 
-  for (let index = 0; index < radix; index++) {
-
-    if ((number - 10) === index) {
-      return alphas[index];
-    }
-  }
-
-  return number;
 };
 
 const convertBase = (number, radix) => {
@@ -39,6 +40,7 @@ const convertBase = (number, radix) => {
 
     representation = digitToAdd + representation;
   }
+
   return representation ? representation : representation - 0;
 };
 
@@ -70,6 +72,4 @@ function testAllTestCases() {
   test(convertBase, "alphaNum output for base 11 ", 13455, 11, 'A122');
 
 }
-
 testAllTestCases();
-
